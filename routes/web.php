@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EmployeeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,14 @@ use App\Http\Controllers\AdminController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', [AdminController::class, 'index'])-> name("index");
-Route::get('/current', [AdminController::class, 'current']);
-Route::get('/past', [AdminController::class, 'past']);
-Route::get('/add', [AdminController::class, 'add']);
-Route::get('/profile', [AdminController::class, 'profile']);
-Route::get('/login', [AdminController::class, 'login']);
+Route::get('/', [EmployeeController::class, 'index']);
+Route::get('/employee/{id}', [EmployeeController::class, 'show']);
+Route::post('/employee', [EmployeeController::class, 'store']);
+Route::post('/employee/store', [EmployeeController::class, 'store'])->name('employee.store');
+Route::get('/add', [EmployeeController::class, 'add']);
+Route::get('/download-cv/{id}', [EmployeeController::class, 'downloadCV'])->name('download.cv');
+Route::get('/employee/{id}/edit', [EmployeeController::class, 'edit']);
+Route::put('/employee/{id}', [EmployeeController::class, 'update']);
+Route::delete('/employee/{id}', [EmployeeController::class, 'destroy']);
+Route::get('/past', [EmployeeController::class, 'pastEmployees']);
+Route::get('/current', [EmployeeController::class, 'currentEmployees']);

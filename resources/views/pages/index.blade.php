@@ -64,7 +64,7 @@
                                         <div class="symbol mb40">
                                             <i class="fa id-color fa-2x fa-calendar-check-o"></i>
                                         </div>
-                                        <span class="h1 mb0">58</span>
+                                        <span class="h1 mb0">{{ $allEmployeesCount }}</span>
                                         <span class="text-gray">All Employees</span>
                                     </div>
                                 </div>
@@ -74,83 +74,58 @@
                                         <div class="symbol mb40">
                                             <i class="fa id-color fa-2x fa-tags"></i>
                                         </div>
-                                        <span class="h1 mb0">43</span>
+                                        <span class="h1 mb0">{{ $currentEmployeesCount }}</span>
                                         <span class="text-gray">Current Employees</span>
                                     </div>
                                 </div>
-
+                                
                                 <div class="col-lg-3 col-6 mb25 order-sm-1">
                                     <div class="card p-4 rounded-5">
                                         <div class="symbol mb40">
                                             <i class="fa id-color fa-2x fa-calendar"></i>
                                         </div>
-                                        <span class="h1 mb0">15</span>
+                                        <span class="h1 mb0">{{ $pastEmployeesCount }}</span>
                                         <span class="text-gray">Past Employees</span>
                                     </div>
                                 </div>
+
                             </div>
 
                             <div class="card p-4 rounded-5 mb25">
-                                <h4>All Employees</h4>
-
+                                <h4>All Employees
+                                <a href="/add" class="btn btn-primary" style="margin-left: 80%; margin-top: 0px;">Add Employee</a>
+                                </h4>
                                 <table class="table de-table">
                                   <thead>
                                     <tr>
                                       <th scope="col"><span class="text-uppercase fs-12 text-gray">Employee ID</span></th>
                                       <th scope="col"><span class="text-uppercase fs-12 text-gray">Employee Name</span></th>
                                       <th scope="col"><span class="text-uppercase fs-12 text-gray">Email</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Phone Number</span></th>
                                       <th scope="col"><span class="text-uppercase fs-12 text-gray">Position</span></th>
                                       <th scope="col"><span class="text-uppercase fs-12 text-gray">Department</span></th>
                                       <th scope="col"><span class="text-uppercase fs-12 text-gray">Status</span></th>
-                                    </tr>
                                   </thead>
                                   <tbody>
+                                    @foreach ($employees as $employee)
                                     <tr>
-                                      <td><span class="d-lg-none d-sm-block">Employee ID</span><div class="badge bg-gray-100 text-dark">#01236</div></td>
-                                      <td><span class="d-lg-none d-sm-block">Employee Name</span><span class="bold">Jeep Renegade</span></td>
-                                      <td><span class="d-lg-none d-sm-block">Email</span>New York</td>
-                                      <td><span class="d-lg-none d-sm-block">Phone Number</span>Los Angeles</td>
-                                      <td><span class="d-lg-none d-sm-block">Position</span>March 2, 2023</td>
-                                      <td><span class="d-lg-none d-sm-block">Department</span>March 10, 2023</td>
-                                      <td><div class="badge rounded-pill bg-success">Status</div></td>
+                                        <td><span class="d-lg-none d-sm-block">Employee ID</span>{{ $employee->company_id }}</td>
+                                        <td><span class="d-lg-none d-sm-block">Employee Name</span><a href="/employee/{{ $employee->id }} " style="color: grey;">{{ $employee->full_name }}</a></td>
+                                        <td><span class="d-lg-none d-sm-block">Email</span>{{ $employee->personal_email_address }}</td>
+                                        <td><span class="d-lg-none d-sm-block">Position</span>{{ $employee->position }}</td>
+                                        <td><span class="d-lg-none d-sm-block">Department</span>{{ $employee->department }}</td>
+                                        <td><span class="d-lg-none d-sm-block">Status</span>{{ $employee->status }}</td>
+                                        <!-- Add other columns as needed -->
+                                        <td>
+                                            <a href="/employee/{{ $employee->id }}/edit" class="btn btn-primary">Edit</a>
+                                            <form action="/employee/{{ $employee->id }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                      <td><span class="d-lg-none d-sm-block">Employee ID</span><div class="badge bg-gray-100 text-dark">#01236</div></td>
-                                      <td><span class="d-lg-none d-sm-block">Employee Name</span><span class="bold">Jeep Renegade</span></td>
-                                      <td><span class="d-lg-none d-sm-block">Email</span>New York</td>
-                                      <td><span class="d-lg-none d-sm-block">Phone Number</span>Los Angeles</td>
-                                      <td><span class="d-lg-none d-sm-block">Position</span>March 2, 2023</td>
-                                      <td><span class="d-lg-none d-sm-block">Department</span>March 10, 2023</td>
-                                      <td><div class="badge rounded-pill bg-success">Status</div></td>
-                                    </tr>
-                                    <tr>
-                                      <td><span class="d-lg-none d-sm-block">Employee ID</span><div class="badge bg-gray-100 text-dark">#01236</div></td>
-                                      <td><span class="d-lg-none d-sm-block">Employee Name</span><span class="bold">Jeep Renegade</span></td>
-                                      <td><span class="d-lg-none d-sm-block">Email</span>New York</td>
-                                      <td><span class="d-lg-none d-sm-block">Phone Number</span>Los Angeles</td>
-                                      <td><span class="d-lg-none d-sm-block">Position</span>March 2, 2023</td>
-                                      <td><span class="d-lg-none d-sm-block">Department</span>March 10, 2023</td>
-                                      <td><div class="badge rounded-pill bg-success">Status</div></td>
-                                    </tr>
-                                    <tr>
-                                      <td><span class="d-lg-none d-sm-block">Employee ID</span><div class="badge bg-gray-100 text-dark">#01236</div></td>
-                                      <td><span class="d-lg-none d-sm-block">Employee Name</span><span class="bold">Jeep Renegade</span></td>
-                                      <td><span class="d-lg-none d-sm-block">Email</span>New York</td>
-                                      <td><span class="d-lg-none d-sm-block">Phone Number</span>Los Angeles</td>
-                                      <td><span class="d-lg-none d-sm-block">Position</span>March 2, 2023</td>
-                                      <td><span class="d-lg-none d-sm-block">Department</span>March 10, 2023</td>
-                                      <td><div class="badge rounded-pill bg-success">Status</div></td>
-                                    </tr>
-                                    <tr>
-                                      <td><span class="d-lg-none d-sm-block">Employee ID</span><div class="badge bg-gray-100 text-dark">#01236</div></td>
-                                      <td><span class="d-lg-none d-sm-block">Employee Name</span><span class="bold">Jeep Renegade</span></td>
-                                      <td><span class="d-lg-none d-sm-block">Email</span>New York</td>
-                                      <td><span class="d-lg-none d-sm-block">Phone Number</span>Los Angeles</td>
-                                      <td><span class="d-lg-none d-sm-block">Position</span>March 2, 2023</td>
-                                      <td><span class="d-lg-none d-sm-block">Department</span>March 10, 2023</td>
-                                      <td><div class="badge rounded-pill bg-success">Status</div></td>
-                                    </tr>
+                                    @endforeach
+                                    <!-- Add more rows for other employees if needed -->
                                   </tbody>
                                 </table>
                             </div>                            

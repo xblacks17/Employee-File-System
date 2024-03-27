@@ -1,101 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
+
 <head>
+    <title>Employee Details</title>
+    <link rel="icon" href="images/icon.png" type="image/gif" sizes="16x16">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #FFFFFF;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: grey;
-        }
-        .employee-details {
-            display: block;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        .employee-details label {
-            font-weight: bold;
-            color: orange;
-        }
-        .employee-details span {
-            font-weight: normal;
-        }
-        .company-details {
-            margin-top: 20px;
-        }
-        .company-details p {
-            margin-bottom: 10px;
-        }
-        .container {
-            margin-top: 30px;
-        }
-
-        h2 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: grey;
-        }
-    </style>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mdb.min.css">
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/coloring.css">
 </head>
+
 <body>
-    
-    <div class="container">
-        <h1>Employee Details</h1>        
-        <h2>Personal Details</h2>
-        <div class="employee-details">
-            <div>
-                <label>Name:</label>
-                <span>John Doe</span>
-            </div>
-            <div>
-                <label>DOB:</label>
-                <span>14 July 1994</span>
-            </div>
-            <div>
-                <label>National ID No.:</label>
-                <span>John Doe</span>
-            </div>
-            <div>
-                <label>Employee ID:</label>
-                <span>12345</span>
+    <div id="wrapper">
+        <!-- Employee Details Section Begin -->
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2>Employee Details</h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h3>Personal Details</h3>
+                                <p><strong>Full Name:</strong> {{ $employee->full_name }}</p>
+                                <p><strong>Email Address:</strong> {{ $employee->personal_email_address }}</p>
+                                <p><strong>Phone Number:</strong> {{ $employee->phone_number }}</p>
+                                <p><strong>Home Address:</strong> {{ $employee->home_address }}</p>
+                                <p><strong>Date of Birth:</strong> {{ $employee->dob }}</p>
+                                <p><strong>National ID:</strong> {{ $employee->national_id }}</p>
+                                <!-- Add other details as needed -->
+                            </div>
+                            <div class="col-lg-6">
+                                <h3>Company Details</h3>
+                                <p><strong>Company ID:</strong> {{ $employee->company_id }}</p>
+                                <p><strong>Company Email:</strong> {{ $employee->company_email_address }}</p>
+                                <p><strong>Position:</strong> {{ $employee->position }}</p>
+                                <p><strong>Department:</strong> {{ $employee->department }}</p>
+                                <p><strong>Start Date:</strong> {{ $employee->start_date }}</p>
+                                <p><strong>Status:</strong> {{ $employee->status }}</p>
+                                <p><strong>CV:</strong> <a href="{{ route('download.cv', ['id' => $employee->id]) }}">Download CV</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="employee-details">
-            <div>
-                <label>Email:</label>
-                <span>john.doe@example.com</span>
-            </div>
-            <div>
-                <label>Phone:</label>
-                <span>(123) 456-7890</span>
-            </div>
-            <div>
-                <label>Home Address:</label>
-                <span>11 Boston Ave, Eastlea, Harare</span>
-            </div>
-        </div>        
-        <h2>Company Details</h2>
-        <div class="company-details">
-            <p>Company: ABC Corporation</p>
-            <p>Department: Marketing</p>
-            <p>Position: Marketing Specialist</p>
-            <p>Location: New York</p>
-        </div>
+        <!-- Employee Details Section End -->
     </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/plugins.js"></script>
+    <script src="js/designesia.js"></script>
 </body>
+
 </html>
