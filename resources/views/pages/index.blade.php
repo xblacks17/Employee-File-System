@@ -100,23 +100,19 @@
                                     <tr>
                                       <th scope="col"><span class="text-uppercase fs-12 text-gray">Employee ID</span></th>
                                       <th scope="col"><span class="text-uppercase fs-12 text-gray">Employee Name</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Email</span></th>
                                       <th scope="col"><span class="text-uppercase fs-12 text-gray">Position</span></th>
                                       <th scope="col"><span class="text-uppercase fs-12 text-gray">Department</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Status</span></th>
                                   </thead>
                                   <tbody>
                                     @foreach ($employees as $employee)
                                     <tr>
                                         <td><span class="d-lg-none d-sm-block">Employee ID</span>{{ $employee->company_id }}</td>
                                         <td><span class="d-lg-none d-sm-block">Employee Name</span><a href="/employee/{{ $employee->id }} " style="color: grey;">{{ $employee->full_name }}</a></td>
-                                        <td><span class="d-lg-none d-sm-block">Email</span>{{ $employee->personal_email_address }}</td>
                                         <td><span class="d-lg-none d-sm-block">Position</span>{{ $employee->position }}</td>
                                         <td><span class="d-lg-none d-sm-block">Department</span>{{ $employee->department }}</td>
-                                        <td><span class="d-lg-none d-sm-block">Status</span>{{ $employee->status }}</td>
                                         <!-- Add other columns as needed -->
                                         <td>
-                                            <a href="/employee/{{ $employee->id }}/edit" class="btn btn-primary">Edit</a>
+                                            <a href="/employee/{{ $employee->id }}/{edit}" class="btn btn-primary">Edit</a>
                                             <form action="/employee/{{ $employee->id }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')

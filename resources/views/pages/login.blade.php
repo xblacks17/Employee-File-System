@@ -40,18 +40,14 @@
                                     <div class="padding40 rounded-3 shadow-soft" data-bgcolor="#ffffff">
                                         <h4>Login</h4>
                                         <div class="spacer-10"></div>
-                                        <form id="form_register" class="form-border" method="" action="">
-                                            <div class="field-set">
-                                                <input type="email" name="name" id="name" class="form-control" placeholder="Your Username" />
-                                            </div>
-                                            <br>
-                                            <div class="field-set">
-                                                <input type="password" name="name" id="name" class="form-control" placeholder="Your Password" />
-                                            </div>
-                                            <div id="submit">
-                                                <input type="submit" id="send_message" value="Sign In" class="btn-main btn-fullwidth rounded-3" href="/"/>
-                                            </div>
-                                        </form>                                        
+                                        <!-- Your login form code here -->
+<form method="post" action="{{ route('login') }}">
+    @csrf
+    <input type="email" name="email" placeholder="Email">
+    <input type="password" name="password" placeholder="Password">
+    <button type="submit">Login</button>
+</form>
+                                       
                                     </div>
                                 </div>
                             </div>

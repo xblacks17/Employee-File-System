@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html lang="zxx">
 
+<!-- Mirrored from www.madebydesignesia.com/themes/rentaly/account-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Jun 2023 10:23:03 GMT -->
 <head>
-    <title>Employee Details</title>
+    <title>Grimco Employees</title>
     <link rel="icon" href="images/icon.png" type="image/gif" sizes="16x16">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/mdb.min.css">
-    <link rel="stylesheet" href="css/plugins.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/coloring.css">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Rentaly - Multipurpose Vehicle Car Rental Website Template" name="description">
+    <meta content="" name="keywords">
+    <meta content="" name="author">
+    <!-- CSS Files
+    ================================================== -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap">
+    <link href="css/mdb.min.css" rel="stylesheet" type="text/css" id="mdb">
+    <link href="css/plugins.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/coloring.css" rel="stylesheet" type="text/css">
+    <!-- color scheme -->
+    <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     <div id="wrapper">
+        
+        <!-- page preloader begin -->
+        <div id="de-preloader"></div>
+        <!-- page preloader close -->
+
         <!-- Employee Details Section Begin -->
         <div id="content">
             <div class="container">
@@ -41,7 +53,7 @@
                                 <p><strong>Department:</strong> {{ $employee->department }}</p>
                                 <p><strong>Start Date:</strong> {{ $employee->start_date }}</p>
                                 <p><strong>Status:</strong> {{ $employee->status }}</p>
-                                <p><strong>CV:</strong> <a href="{{ route('download.cv', ['id' => $employee->id]) }}">Download CV</a></p>
+                                <p><strong>CV:</strong> <a href="{{ url('/employee/cv/'.$employee->id) }}">Download CV</a></p>
                             </div>
                         </div>
                     </div>

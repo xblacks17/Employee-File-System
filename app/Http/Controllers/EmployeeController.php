@@ -45,22 +45,29 @@ public function store(Request $request)
     $employee->department = $request->input('department');
     $employee->start_date = $request->input('start_date');
     $employee->status = $request->input('status');
-    $employee->cv = $request->input('cv');
-    // Add other attributes as needed
+    
+    if ($request->hasFile('cv')) {
+        $cv = $request->file('cv');
+        $cvName = time().'.'.$cv->getClientOriginalExtension();
+        $cv->move(public_path('documents'), $cvName);
+        $employee->cv = $cvName;
+    }
+    
+    // Save the employee
     $employee->save();
     
     return redirect('/')->with('success', 'Employee Added Successfully');
 }
 
-public function add(){
-    return view("pages.add");
+public function downloadCV($id)
+{
+    $employee = Employee::findOrFail($id);
+    $file = public_path('cv').'/'. $employee->cv;
+    return response()->download($file);
 }
 
-public function downloadCV($id) {
-    $employee = Employee::find($id);
-    $cvPath = storage_path('app/' . $employee->cv); // Update this line to use the correct column name where you store the file path
-
-    return response()->download($cvPath, $employee->full_name . '_CV.pdf');
+public function add(){
+    return view("pages.add");
 }
 
 public function update(Request $request, $id)

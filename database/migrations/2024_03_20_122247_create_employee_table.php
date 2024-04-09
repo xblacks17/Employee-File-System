@@ -26,8 +26,8 @@ return new class extends Migration
             $table->string('position');
             $table->string('department');
             $table->date('start_date');
-            $table->string('status');
-            $table->string('cv')->nullable(); // File path or name of the CV file
+            $table->string('status');// File path or name of the CV file
+            $table->binary('cv')->nullable();
             $table->timestamps(); // Created_at and updated_at timestamps
         });
     }

@@ -140,8 +140,8 @@
                                                         </div>
                                                         <div class="col-lg-6 mb20">
                                                             <h5>CV</h5>
-                                                            <input type="file" name="cv" id="cv" class="form-control" placeholder="Enter National ID" />
-                                                        </div>                              
+                                                            <input type="file" name="cv" id="cv" class="form-control" accept=".pdf,.docx" />
+                                                        </div>                            
                                                     </div>
                                                 </div>                                                
                                             </div>                                          
