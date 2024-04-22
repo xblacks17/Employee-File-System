@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zxx">
 
-
 <!-- Mirrored from www.madebydesignesia.com/themes/rentaly/account-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Jun 2023 10:23:04 GMT -->
 <head>
     <title>Grimco Employee File</title>
@@ -36,7 +35,7 @@
             <section id="section-settings" class="bg-gray-100">
                 <div class="container">
                     <div class="row">
-                    <div class="col-lg-3 mb30">
+                        <div class="col-lg-3 mb30">
                             <div class="card p-4 rounded-5">
                                 <div class="profile_avatar">
                                     <div class="profile_name">
@@ -94,9 +93,24 @@
                                                             <input type="date" name="dob" id="dob" class="form-control" placeholder="Enter DOB" />
                                                         </div>
                                                         <div class="col-lg-6 mb20">
+                                                            <h5>Sex</h5>
+                                                            <select name="sex" id="sex" class="form-control">
+                                                                <option value="male">Male</option>
+                                                                <option value="female">Female</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-lg-6 mb20">
                                                             <h5>National ID No.</h5>
                                                             <input type="text" name="national_id" id="national_id" class="form-control" placeholder="Enter National ID" />
-                                                        </div>                              
+                                                        </div>
+                                                        <div class="col-lg-6 mb20">
+                                                            <h5>Next of Kin</h5>
+                                                            <textarea name="next_of_kin" id="next_of_kin" cols="30" rows="5" placeholder="Enter Next of Kin (separated by commas)"></textarea>
+                                                        </div>
+                                                        <div class="col-lg-6 mb20">
+                                                            <h5>Dependents</h5>
+                                                            <textarea name="dependents" id="dependents" cols="30" rows="5" placeholder="Enter Dependents (separated by commas)"></textarea>
+                                                        </div>                             
                                                     </div>
                                                 </div>                                                
                                             </div>                                          

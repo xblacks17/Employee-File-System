@@ -42,7 +42,10 @@
                                 <p><strong>Phone Number:</strong> {{ $employee->phone_number }}</p>
                                 <p><strong>Home Address:</strong> {{ $employee->home_address }}</p>
                                 <p><strong>Date of Birth:</strong> {{ $employee->dob }}</p>
+                                <p><strong>Sex:</strong> {{ $employee->sex }}</p>
                                 <p><strong>National ID:</strong> {{ $employee->national_id }}</p>
+                                <p><strong>Next of Kin:</strong> {{ $employee->next_of_kin }}</p>
+                                <p><strong>Dependents:</strong> {{ $employee->dependents }}</p>
                                 <!-- Add other details as needed -->
                             </div>
                             <div class="col-lg-6">
@@ -53,7 +56,7 @@
                                 <p><strong>Department:</strong> {{ $employee->department }}</p>
                                 <p><strong>Start Date:</strong> {{ $employee->start_date }}</p>
                                 <p><strong>Status:</strong> {{ $employee->status }}</p>
-                                <p><strong>CV:</strong> <a href="{{ url('/employee/cv/'.$employee->id) }}">Download CV</a></p>
+                                <p><strong>CV:</strong> <a href="{{ url('employees/{employee}/download'.$employee->id) }}">Download CV</a></p>
                             </div>
                         </div>
                     </div>

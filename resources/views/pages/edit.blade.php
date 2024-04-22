@@ -89,8 +89,23 @@
                                                             <input type="date" name="dob" id="dob" class="form-control" placeholder="Enter DOB" value="{{ $employee->dob }}"/>
                                                         </div>
                                                         <div class="col-lg-6 mb20">
+                                                            <h5>Sex</h5>
+                                                            <select name="sex" id="sex" class="form-control">
+                                                                <option value="male">Male</option>
+                                                                <option value="female">Female</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-lg-6 mb20">
                                                             <h5>National ID No.</h5>
-                                                            <input type="text" name="national_id" id="national_id" class="form-control" placeholder="Enter National ID" value="{{ $employee->national_id }}" value="{{ $employee->national_id }}"/>
+                                                            <input type="text" name="national_id" id="national_id" class="form-control" placeholder="Enter National ID" value="{{ $employee->national_id }}"/>
+                                                        </div>                                                        
+                                                        <div class="col-lg-6 mb20">
+                                                            <h5>Next of Kin</h5>
+                                                            <textarea name="next_of_kin" id="next_of_kin" cols="30" rows="5" placeholder="Enter Next of Kin (separated by commas)" >{{ $employee->next_of_kin }}</textarea>
+                                                        </div>
+                                                        <div class="col-lg-6 mb20">
+                                                            <h5>Dependents</h5>
+                                                            <textarea name="dependents" id="dependents" cols="30" rows="5" placeholder="Enter Dependents (separated by commas)">{{ $employee->dependents }}</textarea>
                                                         </div>                              
                                                     </div>
                                                 </div>                                                

@@ -38,7 +38,10 @@ public function store(Request $request)
     $employee->phone_number = $request->input('phone_number');
     $employee->home_address = $request->input('home_address');
     $employee->dob = $request->input('dob');
+    $employee->sex = $request->input('sex');
     $employee->national_id = $request->input('national_id');
+    $employee->next_of_kin = json_encode(explode(',', $request->input('next_of_kin'))); // Convert to a JSON string
+    $employee->dependents = json_encode(explode(',', $request->input('dependents'))); // Convert to a JSON string
     $employee->company_id = $request->input('company_id');
     $employee->company_email_address = $request->input('company_email_address');
     $employee->position = $request->input('position');
@@ -49,7 +52,7 @@ public function store(Request $request)
     if ($request->hasFile('cv')) {
         $cv = $request->file('cv');
         $cvName = time().'.'.$cv->getClientOriginalExtension();
-        $cv->move(public_path('documents'), $cvName);
+        $cv->storeAs('cvs', $cvName, 'public');
         $employee->cv = $cvName;
     }
     
@@ -59,12 +62,12 @@ public function store(Request $request)
     return redirect('/')->with('success', 'Employee Added Successfully');
 }
 
-public function downloadCV($id)
-{
-    $employee = Employee::findOrFail($id);
-    $file = public_path('cv').'/'. $employee->cv;
-    return response()->download($file);
-}
+public function downloadAttachment($id)
+    {
+        $employee = Employee::findOrFail($id);
+        $file = public_path('storage/cvs').'/'. $employee->cv;
+        return response()->download($file);
+    }
 
 public function add(){
     return view("pages.add");
@@ -79,14 +82,23 @@ public function update(Request $request, $id)
     $employee->phone_number = $request->input('phone_number');
     $employee->home_address = $request->input('home_address');
     $employee->dob = $request->input('dob');
+    $employee->sex = $request->input('sex');
     $employee->national_id = $request->input('national_id');
+    $employee->next_of_kin = json_encode(explode(',', $request->input('next_of_kin'))); // Convert to a JSON string
+    $employee->dependents = json_encode(explode(',', $request->input('dependents'))); // Convert to a JSON string
     $employee->company_id = $request->input('company_id');
     $employee->company_email_address = $request->input('company_email_address');
     $employee->position = $request->input('position');
     $employee->department = $request->input('department');
     $employee->start_date = $request->input('start_date');
     $employee->status = $request->input('status');
-    $employee->cv = $request->input('cv');
+
+    if ($request->hasFile('cv')) {
+        $cv = $request->file('cv');
+        $cvName = time().'.'.$cv->getClientOriginalExtension();
+        $cv->storeAs('cvs', $cvName, 'public');
+        $employee->cv = $cvName;
+    }
     // Update other attributes as needed
     $employee->save();
 

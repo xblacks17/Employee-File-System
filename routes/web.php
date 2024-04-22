@@ -24,4 +24,4 @@ Route::put('/employee/{id}', [EmployeeController::class, 'update']);
 Route::delete('/employee/{id}', [EmployeeController::class, 'destroy']);
 Route::get('/past', [EmployeeController::class, 'pastEmployees']);
 Route::get('/current', [EmployeeController::class, 'currentEmployees']);
-Route::get('/employee/cv/{id}', [EmployeeController::class, 'downloadCV'])->name('download.cv');
+Route::get('employees/{employee}/download', [EmployeeController::class, 'downloadAttachment'])->name('download.attachment');
