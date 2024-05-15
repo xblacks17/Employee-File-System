@@ -27,7 +27,7 @@ class Employee extends Model
         'department',
         'start_date',
         'status',
-        'cv', // File path or name of the CV file
+        'attachment',
     ];    
 
 }

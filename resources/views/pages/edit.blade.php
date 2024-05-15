@@ -23,6 +23,21 @@
 </head>
 
 <body>
+<div id="id="fixed-header"">
+        <h3 style="
+        text-align: center;position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: orange; /* Example background color */
+        color: #fff; /* Example text color */
+        padding: 20px 0; /* Adjust padding as needed */
+        text-align: center;
+        z-index: 1000; /* Ensure it appears above other content */">
+        Grimco Employee Database System
+        </h3>
+    </div>
+
     <div id="wrapper">
         <div id="content">
             <div id="top"></div>
@@ -55,7 +70,7 @@
                             <div class="card p-4  rounded-5">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <form id="form-edit-item" class="form-border" method="post" action="/employee/{{ $employee->id }}">
+                                        <form id="form-edit-item" class="form-border" method="post" action="/employee/{{ $employee->id }}" enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
                                             <div class="de_tab tab_simple">
@@ -149,9 +164,9 @@
                                                             </select>
                                                         </div>
                                                         <div class="col-lg-6 mb20">
-                                                            <h5>CV</h5>
-                                                            <input type="file" name="cv" id="cv" class="form-control" placeholder="Enter National ID" value="{{ $employee->cv }}"/>
-                                                        </div>                              
+                                                            <h5>Attachments</h5>
+                                                            <input type="file" name="attachment" id="attachment" class="form-control" />
+                                                        </div>                          
                                                     </div>
                                                 </div>                                                
                                             </div>                                          

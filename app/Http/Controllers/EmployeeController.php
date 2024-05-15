@@ -48,26 +48,13 @@ public function store(Request $request)
     $employee->department = $request->input('department');
     $employee->start_date = $request->input('start_date');
     $employee->status = $request->input('status');
-    
-    if ($request->hasFile('cv')) {
-        $cv = $request->file('cv');
-        $cvName = time().'.'.$cv->getClientOriginalExtension();
-        $cv->storeAs('cvs', $cvName, 'public');
-        $employee->cv = $cvName;
-    }
-    
+    $attachmentPath = $request->file('attachment')->store('attachments');
+    $employee->attachment = $attachmentPath;
     // Save the employee
     $employee->save();
     
     return redirect('/')->with('success', 'Employee Added Successfully');
 }
-
-public function downloadAttachment($id)
-    {
-        $employee = Employee::findOrFail($id);
-        $file = public_path('storage/cvs').'/'. $employee->cv;
-        return response()->download($file);
-    }
 
 public function add(){
     return view("pages.add");
@@ -92,18 +79,29 @@ public function update(Request $request, $id)
     $employee->department = $request->input('department');
     $employee->start_date = $request->input('start_date');
     $employee->status = $request->input('status');
-
-    if ($request->hasFile('cv')) {
-        $cv = $request->file('cv');
-        $cvName = time().'.'.$cv->getClientOriginalExtension();
-        $cv->storeAs('cvs', $cvName, 'public');
-        $employee->cv = $cvName;
-    }
+    $attachmentPath = $request->file('attachment')->store('attachments');
+    $employee->attachment = $attachmentPath;
     // Update other attributes as needed
     $employee->save();
 
     return redirect('/');
 }
+
+public function downloadAttachment(Employee $employee)
+{
+    // Get the attachment path from the employee record
+    $attachmentPath = $employee->attachment;
+
+    // Check if the attachment exists
+    if ($attachmentPath) {
+        // Generate a download response for the attachment
+        return response()->download(storage_path('app/' . $attachmentPath));
+    } else {
+        // Redirect back with an error message if attachment does not exist
+        return back()->with('error', 'Attachment not found');
+    }
+}
+
 
 public function destroy($id)
 {

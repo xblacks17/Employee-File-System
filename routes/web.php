@@ -25,3 +25,4 @@ Route::delete('/employee/{id}', [EmployeeController::class, 'destroy']);
 Route::get('/past', [EmployeeController::class, 'pastEmployees']);
 Route::get('/current', [EmployeeController::class, 'currentEmployees']);
 Route::get('employees/{employee}/download', [EmployeeController::class, 'downloadAttachment'])->name('download.attachment');
+

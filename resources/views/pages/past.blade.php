@@ -23,6 +23,21 @@
 </head>
 
 <body>
+<div id="id="fixed-header"">
+        <h3 style="
+        text-align: center;position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: orange; /* Example background color */
+        color: #fff; /* Example text color */
+        padding: 20px 0; /* Adjust padding as needed */
+        text-align: center;
+        z-index: 1000; /* Ensure it appears above other content */">
+        Grimco Employee Database System
+        </h3>
+    </div>
+
     <div id="wrapper">
         
         <!-- page preloader begin -->

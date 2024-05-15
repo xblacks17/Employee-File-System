@@ -30,7 +30,7 @@ return new class extends Migration
         $table->string('department');
         $table->date('start_date');
         $table->string('status');
-        $table->string('cv')->nullable();
+        $table->string('attachment')->nullable();
         $table->timestamps(); // Created_at and updated_at timestamps
     });
 }
